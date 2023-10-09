@@ -1,0 +1,17 @@
+{
+  "name": "postcss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss src/styles.css --dir dist",
+    "watch:css": "postcss src/styles.css --dir dist -w"
+  },
+  "author": "Kamil Stepaniak",
+  "license": "ISC",
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
+  }
+}

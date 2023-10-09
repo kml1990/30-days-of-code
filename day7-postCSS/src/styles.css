@@ -1,0 +1,13 @@
+body {
+  & p {
+    color: orange;
+  }
+}
+
+body div {
+  color: green;
+}
+
+body {
+  display: grid;
+}
