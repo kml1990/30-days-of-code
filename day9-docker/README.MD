@@ -90,9 +90,71 @@
   * OS Layer (Linux)
 * Add enviroment variables, create directories, files etc.
 * Immutable template that defines how a container will be realized
+* Docker images are versioned
+  * Different versions are identified by tags
 
 ### Container
 
 * Actually starts the application
 * A running instance of an image is a container
 * We can run muliple containers from 1 image
+
+## Docker commands
+
+* `docker images` - show running images
+* `docker ps` - show running containers
+* `docker ps -a` - show all containers
+* `docker logs <container_id>` - show container specific logs (`<container_name>` can also be used)
+* `docker run <image_name>:<version>` - run docker image (creates new container every time the command is run)
+* `docker stop <container_id>` - stop specific container
+* `docker run -d -p <host_port>:<container_port> <image_name>:<version>` - run docker image and expose the port its runing to the computer its runing on eg. `docker run -d -p 9000:80 nginx:1.25.0`
+* `docker start <container_id>` to start existing container
+* `docker run --name web-app -d -p <host_port>:<container_port> <image_name>:<version>`- Add a name for the container `web-app`.
+* `docker build -t <app_name>:<app_tag> .` - Build new image from dockerfile that is located in current working directory.
+
+## Docker Registries
+
+* A storage and distribution system for Docker images
+* Official images available from applications like Redis, Mongo, Postgres etc.
+* Official images are maintained by software authors or in collaboration with the Docker community
+* Docker host one of the biggest Docker Registry called `Docker Hub` where we can find and share Docker images.
+* On docker hub we can host private or public repositories for our applications.
+
+### Private Registries
+
+* With private containers we need to authenticate before accessing
+* All big cloud providers offer private registries: Amazong ECR, Google Container Registry etc.
+
+### Registry vs Repository
+
+#### Docker Registry
+
+* A service providing storage
+* Can be hosted by a third party, like AWS or by yourself.
+* Collection of repositories
+
+#### Docker Repository
+
+Collection of related images with the same name but different versions
+
+## Container Port vs Host Port
+
+* Application inside container runs in an isolated Docker network
+* We need to expose the container port to the host (the machine container runs on)
+* We can do this with `Port Binding` - Bind the container's port to the host's port to make the service available to outside world.
+* Standard to use the same port on your host as container is using.
+
+## Building own Docker Images
+
+* Companies create custom images for their apps
+* We want to deploy our app as a Docker container
+* We need to create a `definition` of how to build an image from our application
+
+### Dockerfile - Build Instruction
+
+* Dockerfile is a text document that contains commands to assemble an image
+* Docker can then build an image by reading those instructions
+
+## Docker in development lifecycle
+
+![Svelte vs React](image.png)
