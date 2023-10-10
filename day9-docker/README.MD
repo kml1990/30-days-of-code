@@ -78,3 +78,21 @@
 * VMs take minutes to start
   * Needs to boot up a kernel in order to start
 * VM is compatible with all OS
+
+## Docker Images vs Docker Containers
+
+### Docker Images
+
+* An executable application artifact (simialar to zip)
+* Includes app source code, but also complete enviroment configuration
+  * Application (JS app)
+  * Any services needed (node, npm)
+  * OS Layer (Linux)
+* Add enviroment variables, create directories, files etc.
+* Immutable template that defines how a container will be realized
+
+### Container
+
+* Actually starts the application
+* A running instance of an image is a container
+* We can run muliple containers from 1 image
